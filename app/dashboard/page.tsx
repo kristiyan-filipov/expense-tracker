@@ -2,9 +2,10 @@ import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { format, isThisWeek, isThisMonth, isThisYear, parseISO } from "date-fns";
-import { DollarSign, Calendar, TrendingUp, Trash2, Pencil } from "lucide-react";
+import { DollarSign, Calendar, TrendingUp, Pencil } from "lucide-react";
 import Link from "next/link";
 import { deleteExpense } from "./actions";
+import DeleteExpenseButton from "@/components/DeleteExpenseButton";
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -123,16 +124,7 @@ export default async function DashboardPage() {
                     >
                       <Pencil className="h-5 w-5" />
                     </Link>
-                    <form action={deleteExpense}>
-                      <input type="hidden" name="id" value={expense.id} />
-                      <button
-                        type="submit"
-                        className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-all"
-                        aria-label="Delete expense"
-                      >
-                        <Trash2 className="h-5 w-5" />
-                      </button>
-                    </form>
+                    <DeleteExpenseButton id={expense.id} action={deleteExpense} />
                   </div>
                 </div>
               </div>

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { updateExpense } from "./actions";
 import { Pencil } from "lucide-react";
 import Link from "next/link";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function EditExpensePage({
   params,
@@ -96,12 +97,11 @@ export default async function EditExpensePage({
             >
               Cancel
             </Link>
-            <button
-              type="submit"
-              className="flex-1 bg-primary text-primary-foreground font-semibold rounded-md px-4 py-3 hover:bg-indigo-500 transition-all shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] text-lg"
-            >
-              Save Changes
-            </button>
+            <SubmitButton
+              label="Save Changes"
+              pendingLabel="Saving…"
+              className="flex-1 bg-primary text-primary-foreground font-semibold rounded-md px-4 py-3 hover:bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] text-lg"
+            />
           </div>
         </form>
       </div>

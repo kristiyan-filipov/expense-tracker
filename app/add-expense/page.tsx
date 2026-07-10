@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { addExpense } from "./actions";
 import { Receipt } from "lucide-react";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function AddExpensePage({
   searchParams,
@@ -70,12 +71,11 @@ export default async function AddExpensePage({
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="bg-primary text-primary-foreground font-semibold rounded-md px-4 py-3 hover:bg-indigo-500 transition-all mt-4 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] text-lg"
-          >
-            Save Expense
-          </button>
+          <SubmitButton
+            label="Save Expense"
+            pendingLabel="Saving…"
+            className="bg-primary text-primary-foreground font-semibold rounded-md px-4 py-3 hover:bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] text-lg mt-4"
+          />
         </form>
       </div>
     </div>
