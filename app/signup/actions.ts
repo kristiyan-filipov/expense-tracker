@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 
-export async function login(formData: FormData) {
+export async function signup(formData: FormData) {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
@@ -14,10 +14,10 @@ export async function login(formData: FormData) {
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const { error } = await supabase.auth.signUp(data);
 
   if (error) {
-    redirect("/login?error=Could not authenticate user");
+    redirect("/signup?error=Could not create account. Please try again.");
   }
 
   revalidatePath("/", "layout");

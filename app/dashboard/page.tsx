@@ -2,7 +2,8 @@ import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { format, isThisWeek, isThisMonth, isThisYear, parseISO } from "date-fns";
-import { DollarSign, Calendar, TrendingUp, Trash2 } from "lucide-react";
+import { DollarSign, Calendar, TrendingUp, Trash2, Pencil } from "lucide-react";
+import Link from "next/link";
 import { deleteExpense } from "./actions";
 
 export default async function DashboardPage() {
@@ -114,16 +115,25 @@ export default async function DashboardPage() {
                   <div className="font-semibold text-xl text-white bg-white/5 px-4 py-2 rounded-full border border-white/10">
                     {formatCurrency(Number(expense.amount))}
                   </div>
-                  <form action={deleteExpense}>
-                    <input type="hidden" name="id" value={expense.id} />
-                    <button
-                      type="submit"
-                      className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-all"
-                      aria-label="Delete expense"
+                  <div className="flex items-center gap-1">
+                    <Link
+                      href={`/edit-expense/${expense.id}`}
+                      className="p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-all"
+                      aria-label="Edit expense"
                     >
-                      <Trash2 className="h-5 w-5" />
-                    </button>
-                  </form>
+                      <Pencil className="h-5 w-5" />
+                    </Link>
+                    <form action={deleteExpense}>
+                      <input type="hidden" name="id" value={expense.id} />
+                      <button
+                        type="submit"
+                        className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-all"
+                        aria-label="Delete expense"
+                      >
+                        <Trash2 className="h-5 w-5" />
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             ))}

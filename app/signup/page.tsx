@@ -1,7 +1,7 @@
-import { login } from "./actions";
+import { signup } from "./actions";
 import Link from "next/link";
 
-export default async function LoginPage({
+export default async function SignupPage({
   searchParams,
 }: {
   searchParams: Promise<{ error?: string }>;
@@ -12,8 +12,8 @@ export default async function LoginPage({
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2 mx-auto mt-20 animate-slide-up">
       <div className="glass-card p-8 flex flex-col gap-6 relative">
         <div className="flex flex-col items-center mb-4">
-          <h1 className="text-3xl font-bold tracking-tight text-white">Welcome Back</h1>
-          <p className="text-sm text-slate-400 mt-2 text-center">Sign in to your account to continue</p>
+          <h1 className="text-3xl font-bold tracking-tight text-white">Create an Account</h1>
+          <p className="text-sm text-slate-400 mt-2 text-center">Sign up to start tracking your expenses</p>
         </div>
 
         {error && (
@@ -22,7 +22,7 @@ export default async function LoginPage({
           </div>
         )}
 
-        <form className="flex-1 flex flex-col w-full justify-center gap-4 text-slate-200" action={login}>
+        <form className="flex-1 flex flex-col w-full justify-center gap-4 text-slate-200" action={signup}>
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="email">
               Email
@@ -36,7 +36,7 @@ export default async function LoginPage({
               required
             />
           </div>
-          
+
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="password">
               Password
@@ -55,14 +55,14 @@ export default async function LoginPage({
             type="submit"
             className="bg-primary text-primary-foreground font-medium rounded-md px-4 py-2 hover:bg-indigo-500 transition-colors mt-2 shadow-[0_0_20px_rgba(99,102,241,0.4)]"
           >
-            Sign In
+            Create Account
           </button>
         </form>
 
         <p className="text-center text-sm text-slate-400">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="text-primary hover:text-indigo-400 font-medium transition-colors">
-            Sign up
+          Already have an account?{" "}
+          <Link href="/login" className="text-primary hover:text-indigo-400 font-medium transition-colors">
+            Sign in
           </Link>
         </p>
       </div>
