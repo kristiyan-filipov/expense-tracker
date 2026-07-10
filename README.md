@@ -17,7 +17,7 @@ A simple and practical web application to track daily expenses, manage budgets, 
 
 - **User Authentication:** Secure sign-up, sign-in, and sign-out powered by Supabase Auth.
 - **Dashboard:** An overview of your spending, including total expenses, and recent transaction history.
-- **Expense Logging:** Quickly add new expenses with descriptions and amounts.
+- **Expense Logging:** Quickly add or remove expenses with descriptions and amounts.
 
 ## Getting Started
 
