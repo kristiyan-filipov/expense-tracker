@@ -2,6 +2,8 @@
 
 A simple and practical web application to track daily expenses, manage budgets, and visualize spending habits.
 
+**Live Demo:** [https://your-expense-tracker-placeholder.vercel.app](https://your-expense-tracker-placeholder.vercel.app)
+
 ## Tech Stack
 
 - **Framework:** [Next.js 16](https://nextjs.org/) (App Router, React 19)
@@ -32,7 +34,23 @@ NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
-### 3. Installation
+### 3. Database Setup (Supabase)
+
+Create an `expenses` table in your Supabase project (either via the Table Editor UI or the SQL Editor) with the following configuration:
+
+1. **Columns**:
+   - `id`: `uuid` (Primary Key, default: `gen_random_uuid()`)
+   - `user_id`: `uuid` (Foreign Key referencing `auth.users.id`, non-nullable)
+   - `name`: `text` (non-nullable)
+   - `amount`: `numeric` (non-nullable)
+   - `created_at`: `timestamptz` (default: `now()`)
+
+2. **Row Level Security (RLS)**:
+   - Enable RLS on the `expenses` table.
+   - Add policies allowing users to **insert**, **select**, and **delete** only their own records (e.g., checking that `auth.uid() = user_id`).
+
+
+### 4. Installation
 
 Install project dependencies:
 
@@ -40,7 +58,8 @@ Install project dependencies:
 npm install
 ```
 
-### 4. Run Locally
+### 5. Run Locally
+
 
 Start the development server:
 
