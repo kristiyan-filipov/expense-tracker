@@ -2,7 +2,7 @@
 
 A simple and practical web application to track daily expenses, manage budgets, and visualize spending habits.
 
-**Live Demo:** [https://your-expense-tracker-placeholder.vercel.app](https://your-expense-tracker-placeholder.vercel.app)
+**Live Demo:** https://expense-tracker-five-blue-30.vercel.app/
 
 ## Tech Stack
 
